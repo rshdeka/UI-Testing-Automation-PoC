@@ -172,9 +172,9 @@ async def login(browser: BrowserContext):
         except TimeoutError:
             if await page.is_visible('text=Your account requires authentication'):
                 await page.click('text=Sign out')
-                await page.goto('https://benefits-config-ai-test.optum.com/')
+                await page.goto('https://<ui>/')
                 await page.click('text=Log in with SSO')
-                await page.click('text=rajashri_deka@optum.com')
+                await page.click('text=ak@gmail.com')
                 await page.wait_for_selector('text=Dashboard', timeout=10000)
             else:
                 raise Exception("Authentication failed, request denied.")
