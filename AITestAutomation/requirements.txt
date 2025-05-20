@@ -1,0 +1,6 @@
+requests
+pydantic
+dotenv
+playwright
+browser-use
+langchain-openai
