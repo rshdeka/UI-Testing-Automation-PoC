@@ -406,7 +406,7 @@ async def executeTestCases():
     try:
         # Specify the path to our Chrome executable
         chrome_path = r'C:\Program Files\Google\Chrome Beta\Application\chrome.exe'
-        user_data_dir = r'C:\Users\rdeka3\Downloads\ChromeUserData'
+        user_data_dir = r'C:\Users\ak\Downloads\ChromeUserData'
         chrome_debug_port = 9222  
 
         # Connect to our existing Chrome installation and start Chrome in debugging mode  
