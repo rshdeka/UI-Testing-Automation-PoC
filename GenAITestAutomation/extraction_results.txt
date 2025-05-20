@@ -7,9 +7,9 @@
 
     
     1. Open a new tab and Access the application using valid credentials.
-        - Navigate to the login URL https://benefits-config-ai-test.optum.com/.
+        - Navigate to the login URL <>
         - Click 'Log in with SSO'.
-        - Select the account rajashri_deka@optum.com. 
+        - Select the account <>
         - Wait for Authenticator approval (if prompted).
             - If Authentication fails leading to Request being denied, **log an error and stop execution**.
         - Wait for **up to 10 seconds** for the dashboard to fully load before proceeding.
