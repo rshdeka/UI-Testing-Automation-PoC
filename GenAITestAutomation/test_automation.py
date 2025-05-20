@@ -302,27 +302,34 @@ async def initialize_browser():
 # Function for GPT prompt to generate BrowserUse task
 async def generate_browseruse_agent_prompt(app_url, login_account, positive_test_cases, negative_test_cases):
     # Define the task for the AI agent for accessing the application
-    common_task = f"""  
-    1. Access the application using valid credentials.
+    login_steps = f"""
+    1. Open a new tab and Access the application using valid credentials.
         - Navigate to the login URL {app_url}.
         - Click 'Log in with SSO'.
         - Select the account {login_account}. 
         - Wait for Authenticator approval (if prompted).
             - If Authentication fails leading to Request being denied, **log an error and stop execution**.
-        - Wait for up to 5 seconds for the dashboard to fully load.
+        - Wait for **up to 10 seconds** for the dashboard to fully load before proceeding.
+        
+        - If "Your account requires authentication" message appears after logging in: 
+            - Log Out of the application first. Sign out of the account {login_account}.
+            - Open a new tab and attempt to log in again following the same steps.
     """
 
     # Define the prompt for the AI agent to generate test cases
     test_case_prompt = f"""
-    2. Execute each test case exactly once. No retries or reattempts at all.      
+    2. After successfully logging in, execute each test case exactly once. No retries or reattempts at all.      
         - Execute **each step in sequence** as defined in the test cases ONLY.  
         
         - Positive Test Cases: {positive_test_cases}  
         - Negative Test Cases: {negative_test_cases}  
     
-    3. Check if the actual outcomes match the expected results, indicating successful execution.  
+    3. After executing a test case ONCE, whether it fails or passes:
+        - ALWAYS navigate back to the original dashboard or Home page before executing the next test case.
     
-    4. If any step of a test case fails, **log an error and mark the test case as failed**.
+    4. Check if the actual outcomes match the expected results, indicating successful execution.  
+    
+    5. If any step of a test case fails, **log an error and mark the test case as failed**.
         - **Move on to the next test case immediately without retrying**.
         - No retries or reattempts should be performed for any test case or step.
     """
@@ -334,7 +341,7 @@ async def generate_browseruse_agent_prompt(app_url, login_account, positive_test
     
     ---  
 
-    {common_task}
+    {login_steps}
     {test_case_prompt}
     
     ---  
@@ -345,35 +352,29 @@ async def generate_browseruse_agent_prompt(app_url, login_account, positive_test
         
         - Ensure the dashboard actually loads before executing the test cases.  
         - No retries or reattempts should be performed for any test case or step at all.
-        - After executing a test case, wait for up to 5 seconds before executing the next test case.
-        - Do not take any action unless explicitly instructed. Follow the instructions exactly as written.
-        - If a page reloads or changes state briefly, wait and observe unless explicitly told to act.
-    
+        - After executing a test case, ALWAYS navigate back to the original dashboard or Home page before executing the next test case.
+        - DO NOT take any action unless explicitly instructed. Follow the instructions exactly as written.
+        - **DO NOT loop or retry** actions under any circumstance - including page changes, DOM updates, element index changes, or scrolling.
     ---
 
     **FAIL AND CONTINUE**
 
-        - **DO NOT loop or retry** actions under any circumstance - including page changes, DOM updates, element index changes, or scrolling happens.
         - If messages like "Something new appeared after action", "Element index changed after action", "Scrolled up the page", or "Scrolled down the page" appear:
             - **Immediately stop the current test case**, 
             - **Mark it as FAILED**, 
             - **Move on to the NEXT test case**.
         - Treat any of the above messages as **terminal failures** - do not attempt to recover or proceed within that test case.
-        - DO NOT reattempt any step or part of the test case once failed.
-    
-    ---
-
-    **Handle Unresponsive or Repetitive UI Actions**
-
+        
         - If a button is clicked, but nothing visibly changes (dialog or modal remains open, no navigation or update occurs):
-            - DO NOT retry the click.
-            - If a **Cancel, Close, or Exit** button is visible within the dialog or modal, click it once to exit cleanly.
-            - After attempting to exit, **mark the test case as FAILED** and **move on to the NEXT test case**.
-        - DO NOT perform any additional recovery actions unless explicitly instructed.
+            - **Click a Cancel, Close, or Exit button** once if visible within the dialog or modal to exit cleanly.
+            - **Immediately mark the test case as FAILED** and **move on to the NEXT test case**.
+            - **DO NOT retry the original button**, even if it remains on screen.
+        - Treat the persistent presence of the same dialog or modal after the button click as **terminal failure**.
 
+        - DO NOT reattempt any step or part of the test case once failed.
     """
-    return common_task, task
-
+    return login_steps, task
+    
 
 # Function for GPT prompt to generate Playwright script code for individual test cases (as fallback mechanism)
 async def generate_playwright_script(app_url, login_account, login_task, positive_test_cases, negative_test_cases):
@@ -451,24 +452,18 @@ async def execute_test_cases():
         print(f"Filtered Positive Test Cases: \n{filtered_positive_test_cases}")
         print(f"Filtered Negative Test Cases: \n{filtered_negative_test_cases}")
 
-        # Save the test cases to a text file
-        filename = "extraction_results.txt"
-        with open(filename, "w") as file:
-            file.write("----------------TEST CASES-----------------\n\n")
-            file.write(filtered_positive_test_cases + "\n" + filtered_negative_test_cases)
-        print(f"Parsed Test Cases saved to {filename}")
-
         # Generate the BrowserUse task using the parsed test cases
-        common_task, browseruse_task = await generate_browseruse_agent_prompt(app_url, login_account, filtered_positive_test_cases, filtered_negative_test_cases)
+        login_task, browseruse_task = await generate_browseruse_agent_prompt(app_url, login_account, filtered_positive_test_cases, filtered_negative_test_cases)
         
         # Save the BrowserUse task to a text file
-        with open(filename, "a") as file:
-            file.write("\n\n----------------BROWSERUSE PROMPT-----------------\n")
+        filename = "extraction_results.txt"
+        with open(filename, "w") as file:
+            file.write("----------------BROWSERUSE PROMPT-----------------\n")
             file.write(browseruse_task) 
         print(f"BrowserUse task appended to {filename}")  
         
         # Generate Playwright script code using the parsed test cases (as fallback mechanism)
-        playwright_scripts = await generate_playwright_script(app_url, login_account, common_task, filtered_positive_test_cases, filtered_negative_test_cases)
+        playwright_scripts = await generate_playwright_script(app_url, login_account, login_task, filtered_positive_test_cases, filtered_negative_test_cases)
 
         # Extract and format Playwright automation script code blocks from GPT response
         if isinstance(playwright_scripts, tuple):  
