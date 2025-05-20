@@ -423,5 +423,7 @@ async def verify_analyst_assignment_no_analyst(browser: BrowserContext):
         actual_outcome_details.append(str(e))
 
     return ActionResult(
-        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}",
+        include_in_memory=True
+    )
        
