@@ -15,7 +15,7 @@
         - Wait for **up to 10 seconds** for the dashboard to fully load before proceeding.
         
         - If "Your account requires authentication" message appears after logging in: 
-            - Log Out of the application first. Sign out of the account rajashri_deka@optum.com.
+            - Log Out of the application first. Sign out of the account <>.
             - Open a new tab and attempt to log in again following the same steps.
     
     
