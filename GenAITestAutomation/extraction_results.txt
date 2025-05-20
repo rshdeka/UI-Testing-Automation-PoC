@@ -1,0 +1,502 @@
+----------------TEST CASES-----------------
+
+[
+    {
+        "name": "Verify Navigation Bar Functionality",
+        "description": "Ensure the navigation bar displays all pages and allows users to navigate to them.",
+        "steps": [
+            "Verify the navigation bar is visible at the top of the page.",
+            "Click on each navigation link.",
+            "Verify the user is redirected to the correct page."
+        ],
+        "expected_result": "Navigation bar displays all pages, and clicking on each link redirects the user to the correct page."
+    },
+    {
+        "name": "Verify Bulk Modify Button Functionality",
+        "description": "Ensure the 'Bulk Modify' button allows users to change the owner status for multiple rows.",
+        "steps": [
+            "Select multiple rows in the table.",
+            "Click the 'Bulk Modify' button.",
+            "Change the owner status for the selected rows.",
+            "Verify the owner status is updated for all selected rows."
+        ],
+        "expected_result": "The owner status is successfully updated for all selected rows."
+    },
+    {
+        "name": "Verify Single Row Owner Change",
+        "description": "Ensure users can change the owner of a single row by selecting a name in the owner column.",
+        "steps": [
+            "Select a single row in the table.",
+            "Click on the owner column dropdown.",
+            "Select a new owner name.",
+            "Verify the owner is updated for the selected row."
+        ],
+        "expected_result": "The owner is successfully updated for the selected row."
+    },
+    {
+        "name": "Verify Analyst Assignment",
+        "description": "Ensure users can assign an analyst to the work.",
+        "steps": [
+            "Select a row in the table.",
+            "Click on the 'Assign Analyst' button.",
+            "Select an analyst from the dropdown.",
+            "Verify the analyst is assigned to the selected work."
+        ],
+        "expected_result": "The analyst is successfully assigned to the selected work."
+    }
+]
+[
+    {
+        "name": "Verify Navigation Bar with Invalid URL",
+        "description": "Ensure the navigation bar handles invalid URLs gracefully.",
+        "steps": [
+            "Click on a navigation link.",
+            "Manually modify the URL to an invalid page.",
+            "Verify the application displays an error message or redirects to a default page."
+        ],
+        "expected_result": "The application displays an error message or redirects to a default page."
+    },
+    {
+        "name": "Verify Bulk Modify with No Rows Selected",
+        "description": "Ensure the 'Bulk Modify' button does not allow changes when no rows are selected.",
+        "steps": [
+            "Click the 'Bulk Modify' button without selecting any rows.",
+            "Attempt to change the owner status."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    },
+    {
+        "name": "Verify Single Row Owner Change with Invalid Name",
+        "description": "Ensure the application handles invalid owner names gracefully.",
+        "steps": [
+            "Select a single row in the table.",
+            "Click on the owner column dropdown.",
+            "Enter an invalid owner name.",
+            "Attempt to save the changes."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    },
+    {
+        "name": "Verify Analyst Assignment with No Analyst Selected",
+        "description": "Ensure the application prevents assigning work when no analyst is selected.",
+        "steps": [
+            "Select a row in the table.",
+            "Click on the 'Assign Analyst' button.",
+            "Leave the analyst dropdown empty.",
+            "Attempt to save the changes."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    }
+]
+
+----------------BROWSERUSE PROMPT-----------------
+  
+    **AI Agent Task: UI Testing Automation**  
+    **Objective: Execute defined test cases on the application and summarize the results.**  
+    
+    ---  
+
+      
+    1. Access the application using valid credentials.
+        - Navigate to the login URL 'https://<ui>.com/'
+        - Click 'Log in with SSO'.
+        - Select the account 'rd@gmail.com'
+        - Wait for Authenticator approval (if prompted).
+            - If Authentication fails leading to Request being denied, **log an error and stop execution**.
+        - Wait for up to 5 seconds for the dashboard to fully load.
+    
+    
+    2. Execute each test case exactly once. No retries or reattempts at all.      
+        - Execute **each step in sequence** as defined in the test cases ONLY.  
+        
+        - Positive Test Cases: [
+    {
+        "name": "Verify Navigation Bar Functionality",
+        "description": "Ensure the navigation bar displays all pages and allows users to navigate to them.",
+        "steps": [
+            "Verify the navigation bar is visible at the top of the page.",
+            "Click on each navigation link.",
+            "Verify the user is redirected to the correct page."
+        ],
+        "expected_result": "Navigation bar displays all pages, and clicking on each link redirects the user to the correct page."
+    },
+    {
+        "name": "Verify Bulk Modify Button Functionality",
+        "description": "Ensure the 'Bulk Modify' button allows users to change the owner status for multiple rows.",
+        "steps": [
+            "Select multiple rows in the table.",
+            "Click the 'Bulk Modify' button.",
+            "Change the owner status for the selected rows.",
+            "Verify the owner status is updated for all selected rows."
+        ],
+        "expected_result": "The owner status is successfully updated for all selected rows."
+    },
+    {
+        "name": "Verify Single Row Owner Change",
+        "description": "Ensure users can change the owner of a single row by selecting a name in the owner column.",
+        "steps": [
+            "Select a single row in the table.",
+            "Click on the owner column dropdown.",
+            "Select a new owner name.",
+            "Verify the owner is updated for the selected row."
+        ],
+        "expected_result": "The owner is successfully updated for the selected row."
+    },
+    {
+        "name": "Verify Analyst Assignment",
+        "description": "Ensure users can assign an analyst to the work.",
+        "steps": [
+            "Select a row in the table.",
+            "Click on the 'Assign Analyst' button.",
+            "Select an analyst from the dropdown.",
+            "Verify the analyst is assigned to the selected work."
+        ],
+        "expected_result": "The analyst is successfully assigned to the selected work."
+    }
+]  
+        - Negative Test Cases: [
+    {
+        "name": "Verify Navigation Bar with Invalid URL",
+        "description": "Ensure the navigation bar handles invalid URLs gracefully.",
+        "steps": [
+            "Click on a navigation link.",
+            "Manually modify the URL to an invalid page.",
+            "Verify the application displays an error message or redirects to a default page."
+        ],
+        "expected_result": "The application displays an error message or redirects to a default page."
+    },
+    {
+        "name": "Verify Bulk Modify with No Rows Selected",
+        "description": "Ensure the 'Bulk Modify' button does not allow changes when no rows are selected.",
+        "steps": [
+            "Click the 'Bulk Modify' button without selecting any rows.",
+            "Attempt to change the owner status."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    },
+    {
+        "name": "Verify Single Row Owner Change with Invalid Name",
+        "description": "Ensure the application handles invalid owner names gracefully.",
+        "steps": [
+            "Select a single row in the table.",
+            "Click on the owner column dropdown.",
+            "Enter an invalid owner name.",
+            "Attempt to save the changes."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    },
+    {
+        "name": "Verify Analyst Assignment with No Analyst Selected",
+        "description": "Ensure the application prevents assigning work when no analyst is selected.",
+        "steps": [
+            "Select a row in the table.",
+            "Click on the 'Assign Analyst' button.",
+            "Leave the analyst dropdown empty.",
+            "Attempt to save the changes."
+        ],
+        "expected_result": "The application prevents changes and displays an appropriate error message."
+    }
+]  
+    
+    3. Check if the actual outcomes match the expected results, indicating successful execution.  
+    
+    4. If any step of a test case fails, **log an error and mark the test case as failed**.
+        - **Move on to the next test case immediately without retrying**.
+        - No retries or reattempts should be performed for any test case or step.
+    
+    
+    ---  
+
+    5. Strictly adhere to these instructions mentioned below -
+  
+    **IMPORTANT RULES**    
+        
+        - Ensure the dashboard actually loads before executing the test cases.  
+        - No retries or reattempts should be performed for any test case or step at all.
+        - After executing a test case, wait for up to 5 seconds before executing the next test case.
+        - Do not take any action unless explicitly instructed. Follow the instructions exactly as written.
+        - If a page reloads or changes state briefly, wait and observe unless explicitly told to act.
+    
+    ---
+
+    **FAIL AND CONTINUE**
+
+        - **DO NOT loop or retry** actions under any circumstance - including page changes, DOM updates, element index changes, or scrolling happens.
+        - If messages like "Something new appeared after action", "Element index changed after action", "Scrolled up the page", or "Scrolled down the page" appear:
+            - **Immediately stop the current test case**, 
+            - **Mark it as FAILED**, 
+            - **Move on to the NEXT test case**.
+        - Treat any of the above messages as **terminal failures** - do not attempt to recover or proceed within that test case.
+        - DO NOT reattempt any step or part of the test case once failed.
+    
+    ---
+
+    **Handle Unresponsive or Repetitive UI Actions**
+
+        - If a button is clicked, but nothing visibly changes (dialog or modal remains open, no navigation or update occurs):
+            - DO NOT retry the click.
+            - If a **Cancel, Close, or Exit** button is visible within the dialog or modal, click it once to exit cleanly.
+            - After attempting to exit, **mark the test case as FAILED** and **move on to the NEXT test case**.
+        - DO NOT perform any additional recovery actions unless explicitly instructed.
+
+    
+
+----------------PLAYWRIGHT AUTOMATION SCRIPTS-----------------
+
+@controller.action('Login to the application.')
+async def login(browser: BrowserContext):
+    title = "Login to Application"
+    print(f"Executing {title}")
+
+    page = await browser.new_page()
+    actual_outcome_details = []
+
+    try:
+        await page.goto('https://<ui>.com/')
+        await page.click('text=Log in with SSO')
+        await page.click('text=rd@gmail.com')
+        
+        # Wait for Authenticator approval
+        try:
+            await page.wait_for_selector('text=Authenticator approval', timeout=5000)
+        except:
+            actual_outcome_details.append("Authentication failed, request denied.")
+            return ActionResult(
+                extracted_content=f"Title: {title} \nActual outcome status: Failed \nActual outcome details: {actual_outcome_details}", 
+                include_in_memory=True
+            )
+        
+        await page.wait_for_timeout(5000)  # Wait for dashboard to load
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Navigation Bar Functionality.')
+async def verify_navigation_bar(browser: BrowserContext):
+    title = "Verify Navigation Bar Functionality"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        is_visible = await page.is_visible('your_navigation_bar_selector')
+        if not is_visible:
+            raise Exception("Navigation bar is not visible.")
+
+        navigation_links = await page.query_selector_all('your_navigation_link_selector')
+        for link in navigation_links:
+            await link.click()
+            # Verify redirection
+            current_url = page.url
+            if 'expected_url_part' not in current_url:
+                raise Exception(f"Redirection failed for link: {link}")
+
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Bulk Modify Button Functionality.')
+async def verify_bulk_modify(browser: BrowserContext):
+    title = "Verify Bulk Modify Button Functionality"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_table_row_selector')  # Select multiple rows
+        await page.click('your_bulk_modify_button_selector')
+        await page.select_option('your_owner_status_dropdown_selector', 'new_owner_status')
+
+        # Verify owner status update
+        updated_status = await page.inner_text('your_owner_status_selector')
+        if 'new_owner_status' not in updated_status:
+            raise Exception("Owner status update failed.")
+
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Single Row Owner Change.')
+async def verify_single_row_owner_change(browser: BrowserContext):
+    title = "Verify Single Row Owner Change"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_single_row_selector')
+        await page.click('your_owner_column_dropdown_selector')
+        await page.select_option('your_owner_name_selector', 'new_owner_name')
+
+        # Verify owner update
+        updated_owner = await page.inner_text('your_owner_name_selector')
+        if 'new_owner_name' not in updated_owner:
+            raise Exception("Owner update failed.")
+
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Analyst Assignment.')
+async def verify_analyst_assignment(browser: BrowserContext):
+    title = "Verify Analyst Assignment"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_row_selector')
+        await page.click('your_assign_analyst_button_selector')
+        await page.select_option('your_analyst_dropdown_selector', 'analyst_name')
+
+        # Verify analyst assignment
+        assigned_analyst = await page.inner_text('your_assigned_analyst_selector')
+        if 'analyst_name' not in assigned_analyst:
+            raise Exception("Analyst assignment failed.")
+
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Navigation Bar with Invalid URL.')
+async def verify_navigation_bar_invalid_url(browser: BrowserContext):
+    title = "Verify Navigation Bar with Invalid URL"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_navigation_link_selector')
+        await page.goto('invalid_url')
+
+        # Verify error message or redirection
+        error_message = await page.is_visible('your_error_message_selector')
+        if not error_message:
+            raise Exception("Error message not displayed for invalid URL.")
+
+        actual_outcome_status = "Passed"
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Bulk Modify with No Rows Selected.')
+async def verify_bulk_modify_no_rows(browser: BrowserContext):
+    title = "Verify Bulk Modify with No Rows Selected"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_bulk_modify_button_selector')
+
+        # Attempt to change owner status
+        try:
+            await page.select_option('your_owner_status_dropdown_selector', 'new_owner_status')
+            raise Exception("Owner status change allowed with no rows selected.")
+        except:
+            actual_outcome_status = "Passed"
+
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Single Row Owner Change with Invalid Name.')
+async def verify_single_row_owner_change_invalid_name(browser: BrowserContext):
+    title = "Verify Single Row Owner Change with Invalid Name"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_single_row_selector')
+        await page.click('your_owner_column_dropdown_selector')
+        await page.fill('your_owner_name_input_selector', 'invalid_owner_name')
+
+        # Attempt to save changes
+        try:
+            await page.click('your_save_button_selector')
+            raise Exception("Invalid owner name accepted.")
+        except:
+            actual_outcome_status = "Passed"
+
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", 
+        include_in_memory=True
+    )
+
+@controller.action('Verify Analyst Assignment with No Analyst Selected.')
+async def verify_analyst_assignment_no_analyst(browser: BrowserContext):
+    title = "Verify Analyst Assignment with No Analyst Selected"
+    print(f"Executing {title}")
+
+    page = await browser.get_current_page()
+    actual_outcome_details = []
+
+    try:
+        await page.click('your_row_selector')
+        await page.click('your_assign_analyst_button_selector')
+
+        # Leave analyst dropdown empty and attempt to save
+        try:
+            await page.click('your_save_button_selector')
+            raise Exception("No analyst selected, but changes allowed.")
+        except:
+            actual_outcome_status = "Passed"
+
+    except Exception as e:
+        actual_outcome_details.append(str(e))
+        actual_outcome_status = "Failed"
+
+    return ActionResult(
+        extracted_content=f"Title: {title} \nActual outcome status: {actual_outcome_status} \nActual outcome details: {actual_outcome_details}", include_in_memory=True)
