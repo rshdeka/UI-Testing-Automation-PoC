@@ -496,7 +496,8 @@ async def execute_test_cases():
                 config=BrowserConfig(
                     chrome_instance_path=chrome_path,
                     remote_debugging_port=chrome_debug_port,
-                    headless=False
+                    headless=False,
+                    disable_security=True
                 )
             )
 
