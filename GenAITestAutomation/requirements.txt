@@ -1,0 +1,9 @@
+azure-functions
+azure-storage-blob
+pandas
+requests
+pydantic
+dotenv
+playwright
+browser-use
+langchain-openai
