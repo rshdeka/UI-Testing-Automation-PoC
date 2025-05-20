@@ -162,9 +162,9 @@ async def login(browser: BrowserContext):
     actual_outcome_details = []
 
     try:
-        await page.goto('https://benefits-config-ai-test.optum.com/')
+        await page.goto('https://<ui>/')
         await page.click('text=Log in with SSO')
-        await page.click('text=rajashri_deka@optum.com')
+        await page.click('text=ak@gmail.com')
         
         # Wait for Authenticator approval
         try:
