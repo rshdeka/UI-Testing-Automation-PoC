@@ -1,0 +1,188 @@
+### TEST CASES:
+
+ 
+
+#### Positive Test Cases:
+
+ 
+
+1. **Test Case Name:** Verify Navigation Bar Functionality
+
+   **Description:** Ensure the navigation bar displays all pages and allows users to navigate to them.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Verify the navigation bar is visible at the top of the page.
+
+   - Click on each navigation link.
+
+   - Verify the user is redirected to the correct page.
+
+   **Expected Result:** Navigation bar displays all pages, and clicking on each link redirects the user to the correct page.
+
+ 
+
+2. **Test Case Name:** Verify Bulk Modify Button Functionality
+
+   **Description:** Ensure the 'Bulk Modify' button allows users to change the owner status of multiple rows.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Select multiple rows in the table.
+
+   - Click the 'Bulk Modify' button.
+
+   - Change the owner status for the selected rows.
+
+   - Verify the owner status is updated for all selected rows.
+
+   **Expected Result:** The owner status of all selected rows is updated successfully.
+
+ 
+
+3. **Test Case Name:** Verify Single Row Owner Change
+
+   **Description:** Ensure the user can change the owner of a single row by selecting a name in the owner column.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Select a single row in the table.
+
+   - Click on the owner column dropdown.
+
+   - Select a new owner name.
+
+   - Verify the owner is updated for the selected row.
+
+   **Expected Result:** The owner of the selected row is updated successfully.
+
+ 
+
+#### Negative Test Cases:
+
+ 
+
+4. **Test Case Name:** Verify Navigation Bar with Invalid URL
+
+   **Description:** Ensure the navigation bar handles invalid URLs gracefully.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Click on a navigation link.
+
+   - Manually modify the URL to an invalid page.
+
+   - Verify the application displays an error message or redirects to a default page.
+
+   **Expected Result:** The application displays an error message or redirects to a default page.
+
+ 
+
+5. **Test Case Name:** Verify Bulk Modify with No Rows Selected
+
+   **Description:** Ensure the 'Bulk Modify' button does not allow changes when no rows are selected.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Click the 'Bulk Modify' button without selecting any rows.
+
+   - Attempt to change the owner status.
+
+   **Expected Result:** The application prevents changes and displays an appropriate error message.
+
+ 
+
+6. **Test Case Name:** Verify Single Row Owner Change with Invalid Name
+
+   **Description:** Ensure the user cannot select an invalid name in the owner column dropdown.
+
+   **Steps:**
+
+   - Open the application URL.
+
+   - Select a single row in the table.
+
+   - Click on the owner column dropdown.
+
+   - Attempt to select an invalid name.
+
+   **Expected Result:** The application prevents selection and displays an appropriate error message.
+
+ 
+
+---
+
+ 
+
+### BDD SCENARIOS:
+
+ 
+
+```gherkin
+
+Feature: BCA UI Queue Page
+
+ 
+
+  Scenario: Verify Navigation Bar Functionality
+
+    Given the user is on the application URL
+
+    When the user clicks on each navigation link
+
+    Then the user should be redirected to the correct page
+
+ 
+
+  Scenario: Verify Bulk Modify Button Functionality
+
+    Given the user is on the application URL
+
+    And multiple rows are selected in the table
+
+    When the user clicks the 'Bulk Modify' button
+
+    And changes the owner status
+
+    Then the owner status of all selected rows should be updated
+
+ 
+
+  Scenario: Verify Single Row Owner Change
+
+    Given the user is on the application URL
+
+    And a single row is selected in the table
+
+    When the user selects a new owner name in the owner column dropdown
+
+    Then the owner of the selected row should be updated
+
+
+ 
+
+  Scenario: Verify Bulk Modify with No Rows Selected
+
+    Given the user is on the application URL
+
+    And no rows are selected in the table
+
+    When the user clicks the 'Bulk Modify' button
+
+    Then the application should prevent changes and display an error message
+
+```
+
+ 
+
+---
