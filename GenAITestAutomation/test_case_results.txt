@@ -1,0 +1,41 @@
+## Test Case Results Summary
+
+### Test Case Title: Verify Navigation Bar Functionality
+- **Steps Executed:**
+  - Verify the navigation bar is visible at the top of the page.
+  - Click on each navigation link.
+  - Verify the user is redirected to the correct page.
+- **Expected Result:** 
+  - Navigation bar displays all pages, and clicking on each link redirects the user to the correct page.
+- **Actual Outcome Status:** 
+  - Passed
+- **Actual Outcome Details:**
+  - Navigation items are visible and accessible.
+
+
+### Test Case Title: Verify Bulk Modify Button Functionality
+- **Steps Executed:**
+  - Select multiple rows in the table.
+  - Click the 'Bulk Modify' button.
+  - Change the owner status for the selected rows.
+  - Verify the owner status is updated for all selected rows.
+- **Expected Result:** 
+  - The owner status of all selected rows is updated successfully.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - The 'Apply' button is not clickable. Failed to verify owner status change.
+
+
+### Test Case Title: Verify Single Row Owner Change
+- **Steps Executed:**
+  - Select a single row in the table.
+  - Click on the owner column dropdown.
+  - Select a new owner name.
+  - Verify the owner is updated for the selected row.
+- **Expected Result:** 
+  - The owner of the selected row is updated successfully.
+- **Actual Outcome Status:** 
+  - Passed
+- **Actual Outcome Details:**
+  - The owner of the selected row is updated.
