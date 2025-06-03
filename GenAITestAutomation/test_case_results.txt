@@ -1,0 +1,119 @@
+## Test Case Results Summary
+
+### Test Case Title: Verify Navigation Bar Functionality
+- **Steps Executed:**
+  - Verify the navigation bar is visible at the top of the page.
+  - Click on each navigation link.
+  - Verify the user is redirected to the correct page.
+- **Expected Result:** 
+  - Navigation bar displays all pages, and clicking on each link redirects the user to the correct page.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Navigation bar is not visible.
+
+### Test Case Title: Verify Bulk Modify Button Functionality
+- **Steps Executed:**
+  - Select multiple rows in the table.
+  - Click the 'Bulk Modify' button.
+  - Change the owner status for the selected rows.
+  - Verify the owner status is updated for all selected rows.
+- **Expected Result:** 
+  - The owner status of all selected rows is updated successfully.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_table_row_selector")
+
+
+### Test Case Title: Verify Single Row Owner Change
+- **Steps Executed:**
+  - Select a single row in the table.
+  - Click on the owner column dropdown.
+  - Select a new owner name.
+  - Verify the owner is updated for the selected row.
+- **Expected Result:** 
+  - The owner of the selected row is updated successfully.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_single_row_selector")
+
+
+### Test Case Title: Verify Analyst Assignment
+- **Steps Executed:**
+  - Select a row in the table.
+  - Click on the 'Assign Analyst' button.
+  - Choose an analyst from the dropdown.
+  - Verify the analyst is assigned to the selected work.
+- **Expected Result:** 
+  - The analyst is assigned successfully.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_row_selector")
+
+
+### Test Case Title: Verify Navigation Bar with Invalid URL
+- **Steps Executed:**
+  - Click on a navigation link.
+  - Manually modify the URL to an invalid page.
+  - Verify the application displays an error message or redirects to a default page.
+- **Expected Result:** 
+  - The application displays an error message or redirects to a default page.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_navigation_link_selector")
+
+
+### Test Case Title: Verify Bulk Modify with No Rows Selected
+- **Steps Executed:**
+  - Click the 'Bulk Modify' button without selecting any rows.
+  - Attempt to change the owner status.
+- **Expected Result:** 
+  - The application prevents changes and displays an appropriate error message.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_bulk_modify_button_selector")
+
+
+### Test Case Title: Verify Single Row Owner Change with Invalid Name
+- **Steps Executed:**
+  - Select a single row in the table.
+  - Click on the owner column dropdown.
+  - Attempt to select an invalid name.
+- **Expected Result:** 
+  - The application prevents selection and displays an appropriate error message.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_single_row_selector")
+
+
+### Test Case Title: Verify Analyst Assignment with No Analyst Selected
+- **Steps Executed:**
+  - Select a row in the table.
+  - Click on the 'Assign Analyst' button.
+  - Attempt to save without selecting an analyst.
+- **Expected Result:** 
+  - The application prevents assignment and displays an appropriate error message.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("your_row_selector")
