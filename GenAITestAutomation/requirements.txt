@@ -1,9 +1,8 @@
-azure-functions
-azure-storage-blob
-pandas
+openai
 requests
 pydantic
 dotenv
+pandas
 playwright
-browser-use
+browser-use==0.1.41
 langchain-openai
