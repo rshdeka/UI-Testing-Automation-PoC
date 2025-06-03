@@ -1,0 +1,35 @@
+## Test Case Results Summary
+
+### Test Case Title: Navigation Display Test
+- **Steps Executed:**
+  - Observe the navigation bar at the top of the page.
+- **Expected Result:** 
+  - All pages in the application are listed in the navigation bar.
+- **Actual Outcome Status:** 
+  - Passed
+- **Actual Outcome Details:**
+  - Navigation items are visible and accessible.
+
+### Test Case Title: Bulk Modify Owner Status Test
+- **Steps Executed:**
+  - Select multiple rows in the queue.
+  - Click the 'Bulk modify' button.
+  - Change the owner status.
+- **Expected Result:** 
+  - The owner status of the selected rows is updated.
+- **Actual Outcome Status:** 
+  - Failed
+- **Actual Outcome Details:**
+  - The 'Apply' button is not clickable. Failed to verify owner status change.
+
+### Test Case Title: Single Row Owner Change Test
+- **Steps Executed:**
+  - Select a single row in the queue.
+  - Click on the owner column.
+  - Select a new owner from the dropdown.
+- **Expected Result:** 
+  - The owner of the selected row is updated.
+- **Actual Outcome Status:** 
+  - Passed
+- **Actual Outcome Details:**
+  - The owner of the selected row is updated.
