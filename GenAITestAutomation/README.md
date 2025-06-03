@@ -1,4 +1,4 @@
-# UI-Testing-Automation-PoC
+# UI-Testing-Automation-PoC-using-PromptEngineering-BrowserUse-and-Playwright
 
 This PoC is an innovative approach to UI browser testing automation, utilizing Prompt Engineering, BrowserUse and Playwright.
 BrowserUse connects AI agents with the UI browser and uses prompts to enable efficient automation and validation of UI browser functionalities. 
