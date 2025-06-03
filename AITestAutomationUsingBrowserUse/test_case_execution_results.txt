@@ -1,0 +1,44 @@
+## Test Case Results Summary
+
+### Test Case Title: Navigation Display Test
+- **Steps Executed:**
+  - Observe the navigation bar at the top of the page.
+- **Expected Result:** 
+  - All pages in the application are listed in the navigation bar.
+- **Actual Outcome Status:** 
+  - Success
+- **Actual Outcome Details:**
+  - Navigation bar contains: Home, Manage plans, Support, Sign out.
+
+### Test Case Title: Single Row Owner Change Test
+- **Steps Executed:**
+  - Locate a single row in the queue where the 'Plan' column value starts with 'CO000'.
+  - Within that row, find and click the checkbox element whose 'div id' starts with '#queue-checkbox'.
+  - Within that row, find and click the 'Owner' column element whose 'div id' starts with '#queue-table-cell-owner'.
+  - Wait for the dropdown options to appear.
+  - Locate all <li> elements whose 'li id' starts with '#queue-dropdown-item'.
+  - From the dropdown options, select and click one of the owner names from <li> elements by visible text.
+  - Wait for up to 3 seconds for the dropdown to close and the new owner name to be visible in the owner column.
+  - Confirm the selected owner name is now visible in the owner column for the same row.
+- **Expected Result:** 
+  - The owner of the selected row is updated in the dashboard.
+- **Actual Outcome Status:** 
+  - Success
+- **Actual Outcome Details:**
+  - Owner name updated to 'First Name' for 'Plan' value 'CO000100'.
+
+### Test Case Title: Bulk Modify Owner Status Test
+- **Steps Executed:**
+  - Locate multiple rows in the queue where the 'Plan' column values starts with 'CO000'.
+  - For each such row, find and click the checkbox elements whose 'div id' starts with '#queue-checkbox'.
+  - Click the 'Bulk modify owners' button.
+  - Select a new owner from the dropdown.
+  - Click the 'Apply' button. Wait for up to 3 seconds for the dialog closure.
+  - If the dialog box does not close, consider the test case failed.
+  - If the dialog box closes, confirm that the updated owner name is visible in the dashboard rows.
+- **Expected Result:** 
+  - The owner status of the selected rows is updated in the dashboard.
+- **Actual Outcome Status:** 
+  - Success
+- **Actual Outcome Details:**
+  - Owner status updated to 'Second Name' for selected rows.
