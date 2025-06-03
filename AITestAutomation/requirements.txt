@@ -1,6 +1,7 @@
+openai
 requests
 pydantic
 dotenv
 playwright
-browser-use
+browser-use==0.1.41
 langchain-openai
