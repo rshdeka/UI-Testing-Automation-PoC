@@ -5,4 +5,4 @@ Utilized BrowserUse to instruct the AI Agent on executing test cases, with Playw
 agent and facilitate custom function calls. Implemented asynchronous execution of test cases, which streamlined the validation of UI application functionalities.
 
 Tools Utilized to develop this Agentic AI Framework -
-["Tools Utilized"]("https://github.com/rshdeka/UI-Testing-Automation-PoC/blob/main/Images/IMG_3737.png")
+["Tools Utilized"](https://github.com/rshdeka/UI-Testing-Automation-PoC/blob/main/Images/IMG_3737.png)
